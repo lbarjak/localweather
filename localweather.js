@@ -1,35 +1,35 @@
-$(function() {
-/*
-  if (document.location.protocol == "http:") {
-    $("#location").html(
-      '<a href="https://codepen.io/lbarjak/full/Kgbmmw/" target="_blank"><font color="red">Please use https://</font></a>'
-    );
-  }
-*/
-
-  var latitude = 47.476404, longitude = 19.055738;
-  var skycons = new Skycons({
-    monochrome: false,
-    colors: {
-      main: "#333333",
-      moon: "#ffffb3",
-      fog: "#78586F",
-      fogbank: "#B4ADA3",
-      cloud: "gainsboro",
-      snow: "#7B9EA8",
-      leaf: "#7B9EA8",
-      rain: "lightblue",
-      sun: "yellow"
+$(function () {
+  /*
+    if (document.location.protocol == "http:") {
+      $("#location").html(
+        '<a href="https://codepen.io/lbarjak/full/Kgbmmw/" target="_blank"><font color="red">Please use https://</font></a>'
+      );
     }
-  });
+  */
 
   getWeather();
 
-  setInterval(function() {
+  setInterval(function () {
     getWeather();
   }, 900000); // every 15 minutes
 
   function getWeather() {
+
+    var latitude = 47.476404, longitude = 19.055738;
+    var skycons = new Skycons({
+      monochrome: false,
+      colors: {
+        main: "#333333",
+        moon: "#ffffb3",
+        fog: "#78586F",
+        fogbank: "#B4ADA3",
+        cloud: "gainsboro",
+        snow: "#7B9EA8",
+        leaf: "#7B9EA8",
+        rain: "lightblue",
+        sun: "yellow"
+      }
+    });
 
     navigator.geolocation.getCurrentPosition(success, error, options);
     var options = {
@@ -44,8 +44,8 @@ $(function() {
       //console.warn(`ERROR(${err.code}): ${err.message}`);
     }
     function success(result) {
-    latitude = result.coords.latitude;
-    longitude = result.coords.longitude;
+      latitude = result.coords.latitude;
+      longitude = result.coords.longitude;
       $("#coords").html("latitude: " + latitude.toFixed(2) + ", longitude: " + longitude.toFixed(2));
       location();
       weather();
@@ -55,7 +55,7 @@ $(function() {
       var apiKey = "&key=929ff7ade8cc41e99b688b0ba3740134";
       $.getJSON(
         "https://api.opencagedata.com/geocode/v1/json?q=" + latitude + "+" + longitude + apiKey,
-        function(data) {
+        function (data) {
           var components = data.results[0].components;
           var city = components.city;
           var postcode = components.postcode;
@@ -71,13 +71,13 @@ $(function() {
       var darksky_api = "https://api.darksky.net/forecast/4e6cca0fe2052f9f2b8c230f148635a8/";
       $.getJSON(
         darksky_api + latitude + "," + longitude + "/?callback=?",
-        function(weath) {
+        function (weath) {
           var currently = weath.currently;
           $("#weath").html(currently.summary);
-          $("#C").on("click", function() {
+          $("#C").on("click", function () {
             $("#temperature").html(Math.round((currently.temperature - 32) * 5 / 9) + " °C");
           });
-          $("#F").on("click", function() {
+          $("#F").on("click", function () {
             $("#temperature").html(Math.round(currently.temperature) + " F");
           });
           $("#C").click();
