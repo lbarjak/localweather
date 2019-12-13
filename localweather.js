@@ -74,15 +74,13 @@ $(function() {
         function(weath) {
           var currently = weath.currently;
           $("#weath").html(currently.summary);
-          $("#temperature").html(
-            Math.round((currently.temperature - 32) * 5 / 9) + " °C"
-          );
           $("#C").on("click", function() {
             $("#temperature").html(Math.round((currently.temperature - 32) * 5 / 9) + " °C");
           });
           $("#F").on("click", function() {
             $("#temperature").html(Math.round(currently.temperature) + " F");
           });
+          $("#C").click();
           $("#pressure").html(
             "Pressure: " + Math.round(currently.pressure) + " hPa"
           );
