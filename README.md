@@ -1,2 +1,2 @@
 # localweather
-localweather-lbarjak.netlify.com
+https://localweather-lbarjak.netlify.com
