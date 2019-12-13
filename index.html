@@ -1,0 +1,46 @@
+<!--DOCTYPE html-->
+<html>
+  <head>
+    <meta name="description" content="Local weather 3">
+    <TITLE>Show the Local Weather</TITLE>
+    <META http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://rawgit.com/maxdow/skycons/master/skycons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="localweather.js"></script>
+    <link href="localweather.css" rel="stylesheet" type="text/css" />
+    <style>
+      body{
+      font-family: "Times New Roman", "Times", serif;
+      color: gainsboro;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row center-block">
+      <div class="col-lg-7 col-sm-0">
+      </div>
+      <div class="col-lg-3 col-sm-12 center-block center-text">
+        <h2 id="title">Local Weather</h2>
+        <div id="hr" class="center-block"></div>
+        <h5 id="coords">&nbsp;</h5>
+        <h3 id="location">&nbsp;</h3>
+        <h3 id="weath">&nbsp;</h3>
+        <canvas id="icon" height='64' width='64'></canvas>
+        <h1 id="temperature">&nbsp;</h1>
+        <h3 id="pressure">&nbsp;</h3>
+        <h3 id="humidity">&nbsp;</h3>
+        <div id="hr" class="center-block"></div>
+        <h6>photo &amp; code by László Barják</h6>
+        <div class="btn-group center-block">
+          <button type="button" id="C" class="btn-xs btn-primary">C</button>
+          <button type="button" id="F" class="btn-xs btn-primary">F</button>
+        </div>
+      </div>
+      <div class="col-lg-7 col-sm-0">
+      </div>
+    </div>
+  </body>
+</html>
