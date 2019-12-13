@@ -78,9 +78,7 @@ $(function() {
             Math.round((currently.temperature - 32) * 5 / 9) + " °C"
           );
           $("#C").on("click", function() {
-            $("#temperature").html(
-              Math.round((currently.temperature - 32) * 5 / 9) + " °C"
-            );
+            $("#temperature").html(Math.round((currently.temperature - 32) * 5 / 9) + " °C");
           });
           $("#F").on("click", function() {
             $("#temperature").html(Math.round(currently.temperature) + " F");
