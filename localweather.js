@@ -1,4 +1,5 @@
 $(function () {
+  console.log("Hello!");
   /*
     if (document.location.protocol == "http:") {
       $("#location").html(
@@ -31,21 +32,24 @@ $(function () {
       }
     });
 
-    navigator.geolocation.getCurrentPosition(success, error, options);
-    var options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    };
-    function error(err) {
-      $("#title").html(
-        'Please Allow "Know your location"<br />in your browser!'
-      );
-      //console.warn(`ERROR(${err.code}): ${err.message}`);
+    var getPosition = function () {
+      return new Promise(function (resolve) {
+        navigator.geolocation.getCurrentPosition(resolve);
+        console.log(resolve);
+      });
     }
-    function success(result) {
-      latitude = result.coords.latitude;
-      longitude = result.coords.longitude;
+
+    getPosition()
+      .then((position) => {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        view();
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
+
+    function view() {
       $("#coords").html("latitude: " + latitude.toFixed(2) + ", longitude: " + longitude.toFixed(2));
       location();
       weather();
