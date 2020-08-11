@@ -9,7 +9,7 @@ body {
   overflow: hidden;
 }
 
-#hr {
+.hr {
   background-color: rgba(217, 217, 217, 0.8);
   height: 1px;
   box-shadow: 0 0 8px 1px gainsboro;
