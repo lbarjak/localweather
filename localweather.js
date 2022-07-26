@@ -1,13 +1,4 @@
 $(function () {
-  console.log("Hello!");
-  /*
-    if (document.location.protocol == "http:") {
-      $("#location").html(
-        '<a href="https://codepen.io/lbarjak/full/Kgbmmw/" target="_blank"><font color="red">Please use https://</font></a>'
-      );
-    }
-  */
-
   getWeather();
 
   setInterval(function () {
@@ -35,7 +26,6 @@ $(function () {
     var getPosition = function () {
       return new Promise(function (resolve) {
         navigator.geolocation.getCurrentPosition(resolve);
-        console.log(resolve);
       });
     }
 
@@ -60,8 +50,11 @@ $(function () {
       $.getJSON(
         "https://api.opencagedata.com/geocode/v1/json?q=" + latitude + "+" + longitude + apiKey,
         function (data) {
-          var formatted = data.results[0].formatted.split(",");
-          $("#location").html(formatted[2] + " " + formatted[0] + "<br>" + formatted[1]);
+          var components = data.results[0].components
+          console.log(components)
+          $("#location").html(components.postcode + " " + 
+          (components.city || components.town || components.village) + "<br>" + 
+          components.road);
         }
       );
     }
