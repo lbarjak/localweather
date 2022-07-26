@@ -60,13 +60,8 @@ $(function () {
       $.getJSON(
         "https://api.opencagedata.com/geocode/v1/json?q=" + latitude + "+" + longitude + apiKey,
         function (data) {
-          var components = data.results[0].components;
-          var city = components.city;
-          var postcode = components.postcode;
-          var city_district = components.city_district;
-          var suburb = components.suburb;
-          var road = components.road;
-          $("#location").html(postcode + " " + city + ", " + suburb);
+          var formatted = data.results[0].formatted.split(",");
+          $("#location").html(formatted[2] + " " + formatted[0] + ", " + formatted[1]);
         }
       );
     }
