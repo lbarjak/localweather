@@ -51,10 +51,12 @@ $(function () {
         "https://api.opencagedata.com/geocode/v1/json?q=" + latitude + "+" + longitude + apiKey,
         function (data) {
           var components = data.results[0].components
-          console.log(components)
-          $("#location").html(components.postcode + " " + 
+          var locationString = components.postcode + " " + 
           (components.city || components.town || components.village) + "<br>" + 
-          components.road);
+          components.road
+          if(!locationString.includes("undefined")) {
+            $("#location").html(locationString);
+          }
         }
       );
     }
