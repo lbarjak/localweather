@@ -61,7 +61,7 @@ $(function () {
         "https://api.opencagedata.com/geocode/v1/json?q=" + latitude + "+" + longitude + apiKey,
         function (data) {
           var formatted = data.results[0].formatted.split(",");
-          $("#location").html(formatted[2] + " " + formatted[0] + ", " + formatted[1]);
+          $("#location").html(formatted[2] + " " + formatted[0] + "<br>" + formatted[1]);
         }
       );
     }
