@@ -46,7 +46,7 @@ $(function () {
     }
 
     function location() {
-      var apiKey = "&key=929ff7ade8cc41e99b688b0ba3740134";
+      var apiKey = "&key=ec6d6970dd424393b6232e746d1f1124";
       $.getJSON(
         "https://api.opencagedata.com/geocode/v1/json?q=" + latitude + "+" + longitude + apiKey,
         function (data) {
